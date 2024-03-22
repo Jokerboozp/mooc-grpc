@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option go_package = ".;proto";
+
+service Greeter{
+  rpc GetStream(StreamRequestData) returns (stream StreamResponseData); //服务端流模式
+  rpc PutStream(stream StreamRequestData) returns (StreamResponseData); //客户端流模式
+  rpc AllStream(stream StreamRequestData) returns (stream StreamResponseData); //双向流模式
+}
+
+message StreamRequestData{
+  string data = 1;
+}
+
+message StreamResponseData{
+  string data = 1;
+}
